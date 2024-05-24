@@ -10,7 +10,7 @@ class ItemBase(BaseModel):
 
 
 class MacAddressDict(BaseModel):
-    mac_address_dict: list
+    mac_address_dict: dict
 
 class MacAddress(BaseModel):
     mac_address:  MacAddress

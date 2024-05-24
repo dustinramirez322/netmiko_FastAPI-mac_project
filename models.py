@@ -16,6 +16,12 @@ class MacAddressTable(Base):
     mac_address = Column(VARCHAR, primary_key=True)
     description = Column(VARCHAR)
 
+    def return_macs(self):
+        return self.mac_address
+
+    def return_desc_and_mac(self):
+        return {'mac_address': self.mac_address, 'description': self.description}
+
 # Define the MAC and datetime junction Table DB class
 class DatetimeMacJunction(Base):
     __tablename__ = "datetime_mac_junction"
