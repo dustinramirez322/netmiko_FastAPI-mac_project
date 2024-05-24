@@ -40,3 +40,10 @@ def select_recent_macs(db: Session):
     recent_dt = utilities.get_recent_dt()
     return db.query(models.DatetimeMacJunction).filter(models.DatetimeMacJunction.datetime_id == recent_dt).all()
 
+
+def insert_unk_mac(db: Session, unk_mac):
+    mac_address = models.MacAddressTable(mac_address=unk_mac)
+    db.add(mac_address)
+    db.commit()
+    db.refresh(mac_address)
+    return mac_address
