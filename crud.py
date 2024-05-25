@@ -1,7 +1,6 @@
 from sqlalchemy import desc
 from sqlalchemy.orm import Session
 import models
-import utilities
 
 
 # Return a list of all known mac addresses and their descriptions
