@@ -18,6 +18,7 @@ def get_db():
     finally:
         db.close()
 
+
 @app.get("/")
 # Root of API that shows version, docs, and a welcome message
 async def api_root():
@@ -36,10 +37,11 @@ def select_all_known_mac(db: Session = Depends(get_db)):
 # Get information about a specific mac address
 async def select_indiv_known_mac(mac_address: str, db: Session = Depends(get_db)):
     mac_address_info = crud.select_indiv_known_mac(db, mac_address=mac_address)
-    if mac_address_info == None:
+    if mac_address_info is None:
         raise HTTPException(status_code=404, detail="MAC Address not found in database")
     else:
         return mac_address_info
+
 
 @app.get("/recent_datetime/")
 # Get the most recent datetime from the datetime_table

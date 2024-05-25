@@ -37,4 +37,3 @@ def scheduled_mac_get():
     else:
         crud.insert_dt_macs(session, ran_time, current_macs)
     database.close_db(session)
-
