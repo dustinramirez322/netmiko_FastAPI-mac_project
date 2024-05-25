@@ -38,13 +38,3 @@ def scheduled_mac_get():
         crud.insert_dt_macs(session, ran_time, current_macs)
     database.close_db(session)
 
-def get_recent_dt():
-    session = database.start_db()
-    # pull the most recent datetime entry from the datetime_table
-    most_recent = crud.select_recent_datetime(session)
-    database.close_db(session)
-    # change the datetime output
-    recent_raw = most_recent.__repr__()
-    recent_dt = recent_raw.strftime("%Y-%m-%d %H:%M:%S")
-    return recent_dt
-
