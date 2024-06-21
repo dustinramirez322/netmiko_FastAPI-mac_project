@@ -38,8 +38,7 @@ def select_recent_datetime(db: Session):
 def select_recent_macs(db: Session):
     most_recent = select_recent_datetime(db)
     recent_raw = most_recent.__repr__()
-    recent_dt = recent_raw.strftime("%Y-%m-%d %H:%M:%S")
-    return db.query(models.DatetimeMacJunction).filter(models.DatetimeMacJunction.datetime_id == recent_dt).all()
+    return db.query(models.DatetimeMacJunction).filter(models.DatetimeMacJunction.datetime_id == recent_raw).all()
 
 
 def insert_unk_mac(db: Session, unk_mac):
