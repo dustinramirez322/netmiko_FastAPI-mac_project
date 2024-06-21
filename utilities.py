@@ -33,7 +33,6 @@ def scheduled_mac_get():
         # execute if a new mac is found
         for u in unk_macs:
             crud.insert_unk_mac(session, u)
-    # execute if no unknown macs are found
-    else:
-        crud.insert_dt_macs(session, ran_time, current_macs)
+    # insert macs into dt_macs table
+    crud.insert_dt_macs(session, ran_time, current_macs)
     database.close_db(session)
