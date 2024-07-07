@@ -4,6 +4,7 @@ import crud
 import models
 import schemas
 from database import SessionLocal, engine
+import uvicorn
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -56,3 +57,8 @@ async def select_recent_datetime(db: Session = Depends(get_db)):
 async def select_current_macs(db: Session = Depends(get_db)):
     recent_macs = crud.select_recent_macs(db)
     return recent_macs
+
+
+
+if __name__ == '__main__':
+    uvicorn.run(app, port=8000, host='0.0.0.0')
