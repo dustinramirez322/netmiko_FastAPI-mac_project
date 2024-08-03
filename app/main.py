@@ -61,4 +61,4 @@ async def select_current_macs(db: Session = Depends(get_db)):
 
 
 if __name__ == '__main__':
-    uvicorn.run(app, port=8000, host='0.0.0.0')
+    uvicorn.run(app, port=8000, host='0.0.0.0', proxy_headers=True)
