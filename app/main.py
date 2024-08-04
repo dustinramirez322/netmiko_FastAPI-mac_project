@@ -5,6 +5,10 @@ import models
 import schemas
 from database import SessionLocal, engine
 import uvicorn
+import dotenv
+import os
+
+dotenv.load_dotenv()
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -24,7 +28,7 @@ def get_db():
 # Root of API that shows version, docs, and a welcome message
 async def api_root():
     return {"Welcome": "This API will display information about MAC addresses on your network",
-            "Documentation": "http://127.0.0.1:8000/docs", "Version": '0.1'}
+            "Documentation": "http://" + os.environ.get("API_IP")+ "/docs", "Version": '0.1'}
 
 
 @app.get("/known_macs")
